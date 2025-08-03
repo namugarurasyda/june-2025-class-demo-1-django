@@ -1,45 +1,45 @@
-# name: Python trial
+name: Python trial
 
-# on: [push]
+on: [push]
 
-# jobs:
-#   build:
-#      runs-on: ubuntu-latest
+jobs:
+  build:
+     runs-on: ubuntu-latest
 
-#      steps:
-#       - name: Checkout code
-#         uses: actions/checkout@v4
+     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-#       - name: Set up Python
-#         uses: actions/setup-python@v5
-#         with:
-#           python-version: '3.12'
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
       
-#       - name: Install dependencies
-#         run: |
-#           python -m pip install --upgrade pip
-#           pip install -r requirements.txt
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
           
       
-#       # - name: Test with pytest
-#       #   run: |
-#       #     # Install pytest and the coverage tool.
-#       #     pip install pytest pytest-cov
-#       #     # Run the tests and generate a Junit and coverage reports.
-#       #     pytest tests.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
-#       - name: Install pylint
-#         run: pip install pylint
+      # - name: Test with pytest
+      #   run: |
+      #     # Install pytest and the coverage tool.
+      #     pip install pytest pytest-cov
+      #     # Run the tests and generate a Junit and coverage reports.
+      #     pytest tests.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
+      - name: Install pylint
+        run: pip install pylint
 
-#       - name: Lint code with pylint
-#         run: pylint --output-format=github .
-#   # Pylint infers the Python version from the environment it's running in.
-#   # The '.' means Pylint will check all Python files in the current directory.
+      - name: Lint code with pylint
+        run: pylint --output-format=github .
+  # Pylint infers the Python version from the environment it's running in.
+  # The '.' means Pylint will check all Python files in the current directory.
 
-#       - name: Check code formatting with pylint
-#         run: pylint --output-format=github --score=n .
-#         continue-on-error: true
-#   # Pylint is not a formatter. This command checks for formatting
-#   # issues and returns them, but does not fix them.
-#   # The '--score=n' is used to suppress the final score output,
-#   # which can be useful in a CI/CD environment.
+      - name: Check code formatting with pylint
+        run: pylint --output-format=github --score=n .
+        continue-on-error: true
+  # Pylint is not a formatter. This command checks for formatting
+  # issues and returns them, but does not fix them.
+  # The '--score=n' is used to suppress the final score output,
+  # which can be useful in a CI/CD environment.
 
