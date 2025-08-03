@@ -38,17 +38,19 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install pylint
-        run: pip install pylint
+      - name: Install pylint with flake8
+        run: |
+         pip install flake8
+         flake8 . --count --max-complexity=10 --max-line-length=88 --statistics
 
       - name: Lint code with pylint
         run: pylint --output-format=github .
   # Pylint infers the Python version from the environment it's running in.
   # The '.' means Pylint will check all Python files in the current directory.
 
-      - name: Check code formatting with pylint
-        run: pylint --output-format=github --score=n .
-        continue-on-error: true
+      # - name: Check code formatting with pylint
+      #   run: pylint --output-format=github --score=n .
+      #   continue-on-error: true
 
   test:
     needs: install_dependencies
@@ -69,7 +71,7 @@ jobs:
 
       - name: run test
         run: |
-           pytest
+           python -m pytest
 
   build:
     needs: [lint, test]
