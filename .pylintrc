@@ -1,6 +1,6 @@
 [MESSAGES CONTROL]
 # Disable specific messages by their code
-disable=
+disable= all,
     C0303,  # Trailing whitespace
     C0114,  # Missing module docstring
     C0115,  # Missing class docstring
