@@ -27,17 +27,19 @@ jobs:
       #     pip install pytest pytest-cov
       #     # Run the tests and generate a Junit and coverage reports.
       #     pytest tests.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
-
-      
       - name: Install pylint
         run: pip install pylint
 
-      
       - name: Lint code with pylint
-        run: pylint check --output-format=github --target-version=py39
-       
+        run: pylint --output-format=github .
+  # Pylint infers the Python version from the environment it's running in.
+  # The '.' means Pylint will check all Python files in the current directory.
 
-     
       - name: Check code formatting with pylint
-        run: pylint format --diff --target-version=py39
+        run: pylint --output-format=github --score=n .
         continue-on-error: true
+  # Pylint is not a formatter. This command checks for formatting
+  # issues and returns them, but does not fix them.
+  # The '--score=n' is used to suppress the final score output,
+  # which can be useful in a CI/CD environment.
+
