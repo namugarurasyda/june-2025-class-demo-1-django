@@ -29,15 +29,15 @@ jobs:
       #     pytest tests.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
 
       
-      - name: Install Ruff
-        run: pip install ruff
+      - name: Install pylint
+        run: pip install pylint
 
       
-      - name: Lint code with Ruff
-        run: ruff check --output-format=github --target-version=py39
+      - name: Lint code with pylint
+        run: pylint check --output-format=github --target-version=py39
        
 
      
-      - name: Check code formatting with Ruff
-        run: ruff format --diff --target-version=py39
+      - name: Check code formatting with pylint
+        run: pylint format --diff --target-version=py39
         continue-on-error: true
