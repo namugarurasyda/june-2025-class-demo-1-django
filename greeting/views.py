@@ -15,3 +15,4 @@ def greet(request):
 def format_greeting(name):
     """Format greeting message - separate function for testability"""
     return f"Hello, {name}! Welcome to our application."
+
