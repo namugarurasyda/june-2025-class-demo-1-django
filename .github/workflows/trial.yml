@@ -45,7 +45,7 @@ jobs:
 
       - name: Lint code with pylint
         run: pylint --output-format=github .
-        
+
       - name: Install pylint
         run: |
           python -m pip install --upgrade pip
@@ -76,10 +76,11 @@ jobs:
         run: |
 
           pip install -r requirements.txt
+          pip install pytest
 
       - name: run test
         run: |
-           python -m pytest
+           pytest
 
   build:
     needs: [lint, test]
